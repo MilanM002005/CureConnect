@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "659268634419",
+    "project_id": "cureconnect-4763e",
+    "storage_bucket": "cureconnect-4763e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659268634419:android:0cd4b23690f9ccb16d6046",
+        "android_client_info": {
+          "package_name": "com.mitsync.cureconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659268634419-t9217j80dtdcm0ve6c7i7i8l1833v6ia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitsync.cureconnect",
+            "certificate_hash": "f8fb0ee8c3a420f57dc55b8874cbdb5fc4b4bc20"
+          }
+        },
+        {
+          "client_id": "659268634419-f4mp6937h1akiceasjdugdo53rsl6kl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCfMStS1J7rfkU9tbsITUVLVFLQCtfgSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659268634419-f4mp6937h1akiceasjdugdo53rsl6kl1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "659268634419-4uvmq776svfn0hko100etsru9o174f81.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cureconnectApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
