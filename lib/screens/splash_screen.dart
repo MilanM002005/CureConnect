@@ -17,12 +17,16 @@ class SplashScreen extends StatelessWidget {
           // Logo and app title
           Column(
             children: [
-              Image.asset(
-                'assets/logo.png', // Replace with your logo asset
-                height: 150,
-                semanticLabel: 'App Logo', // Accessibility improvement
+              ClipRRect(
+                borderRadius: BorderRadius.circular(40), // Curved edges
+                child: Image.asset(
+                  'assets/logo.png', // Replace with your logo asset
+                  height: 150,
+                  semanticLabel: 'App Logo', // Accessibility improvement
+                ),
               ),
               const SizedBox(height: 20),
+              const Text("       "),const Text("       "),
               const Text(
                 "CURECONNECT",
                 style: TextStyle(
