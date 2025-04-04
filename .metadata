@@ -24,6 +24,9 @@ migration:
     - platform: linux
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
+    - platform: macos
+      create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
+      base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
     - platform: web
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f

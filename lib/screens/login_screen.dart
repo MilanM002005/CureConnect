@@ -149,7 +149,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 side: const BorderSide(color: Colors.grey),
                 minimumSize: const Size(double.infinity, 50),
               ),
-              onPressed: _isLoading ? null : _googleSignIn,
+              onPressed: () async {
+                final authService = Provider.of<AuthService>(context, listen: false);
+                String? error = await authService.signInWithGoogle();
+
+                if (error == null) {
+                  Navigator.pushReplacementNamed(context, '/home');
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(error)),
+                  );
+                }
+              },
               icon: Image.asset(
                 "assets/google_logo.png",
                 height: 24,
@@ -157,6 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               label: const Text("Sign in with Google", style: TextStyle(color: Colors.black)),
             ),
+
           ],
         ),
       ),

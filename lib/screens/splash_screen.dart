@@ -1,5 +1,5 @@
-import 'package:cureconnect_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:sample1/screens/register_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

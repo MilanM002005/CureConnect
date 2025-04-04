@@ -10,7 +10,6 @@ import '../services/auth_service.dart';
 class EmergencyScreen extends StatelessWidget {
   const EmergencyScreen({super.key});
 
-  // ✅ Launch First Aid Tips Link
   void _launchFirstAidTips() async {
     final Uri url = Uri.parse("https://www.healthdirect.gov.au/first-aid-advice");
     if (await canLaunchUrl(url)) {
@@ -20,7 +19,6 @@ class EmergencyScreen extends StatelessWidget {
     }
   }
 
-  // ✅ Call Ambulance (Dial Number)
   void _callAmbulance() async {
     final Uri url = Uri.parse("tel:+917994622820");
     if (await canLaunchUrl(url)) {
@@ -30,7 +28,6 @@ class EmergencyScreen extends StatelessWidget {
     }
   }
 
-  // ✅ Share Live Location with Emergency Contacts
   Future<void> _shareLiveLocation(BuildContext context) async {
     final location = Location();
 
@@ -51,69 +48,88 @@ class EmergencyScreen extends StatelessWidget {
     contactsStream.first.then((contacts) {
       for (var contact in contacts) {
         debugPrint("Sending location to ${contact['name']} at ${contact['phone']}: $locationUrl");
-        // Logic for sending via SMS or push notification goes here
       }
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Location shared with emergency contacts")),
+      const SnackBar(content: Text("Location shared with emergency contacts")),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final buttonColor = isDarkMode
+        ? Colors.pink.shade900.withOpacity(0.3)
+        : Colors.pink.shade100;
+
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Emergency Help",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
+        title: const Text("Emergency Help"),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+          childAspectRatio: 1.1, // Better aspect ratio for buttons
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
           children: [
-            _buildEmergencyButton(Icons.call, "Call Ambulance", onTap: _callAmbulance),
             _buildEmergencyButton(
-              Icons.home,
-              "Nearest Hospital",
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const NearbyHospitalsScreen()));
-              },
+              context,
+              icon: Icons.call,
+              label: "Call Ambulance",
+              color: buttonColor,
+              iconColor: Colors.redAccent,
+              onTap: _callAmbulance,
             ),
             _buildEmergencyButton(
-              Icons.help_outline,
-              "First Aid Tips",
+              context,
+              icon: Icons.local_hospital,
+              label: "Nearest Hospital",
+              color: buttonColor,
+              iconColor: Colors.blue,
+              onTap: () => Navigator.push(context, MaterialPageRoute(
+                  builder: (_) => const NearbyHospitalsScreen(selectedHospital: {},))),
+            ),
+            _buildEmergencyButton(
+              context,
+              icon: Icons.medical_services,
+              label: "First Aid Tips",
+              color: buttonColor,
+              iconColor: Colors.green,
               onTap: _launchFirstAidTips,
             ),
             _buildEmergencyButton(
-              Icons.location_on,
-              "Live Location Sharing",
+              context,
+              icon: Icons.location_on,
+              label: "Live Location",
+              color: buttonColor,
+              iconColor: Colors.orange,
               onTap: () => _shareLiveLocation(context),
             ),
             _buildEmergencyButton(
-              Icons.volunteer_activism,
-              "Blood Donation",
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const BloodDonationScreen()));
-              },
+              context,
+              icon: Icons.bloodtype,
+              label: "Blood Donation",
+              color: buttonColor,
+              iconColor: Colors.red,
+              onTap: () => Navigator.push(context, MaterialPageRoute(
+                  builder: (_) => const BloodDonationScreen())),
             ),
             _buildEmergencyButton(
-              Icons.contacts,
-              "Emergency Contacts",
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen()));
-              },
+              context,
+              icon: Icons.contacts,
+              label: "Emergency Contacts",
+              color: buttonColor,
+              iconColor: Colors.purple,
+              onTap: () => Navigator.push(context, MaterialPageRoute(
+                  builder: (_) => const EmergencyContactsScreen())),
             ),
           ],
         ),
@@ -121,21 +137,43 @@ class EmergencyScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmergencyButton(IconData icon, String label, {VoidCallback? onTap}) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.pink.shade100,
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  Widget _buildEmergencyButton(
+      BuildContext context, {
+        required IconData icon,
+        required String label,
+        required Color color,
+        required Color iconColor,
+        VoidCallback? onTap,
+      }) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
       ),
-      onPressed: onTap ?? () {},
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 40, color: Colors.redAccent),
-          const SizedBox(height: 8),
-          Text(label, textAlign: TextAlign.center, style: const TextStyle(fontSize: 14)),
-        ],
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 36, color: iconColor),
+              const SizedBox(height: 12),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "659268634419-kovldrlib6n57ib3mvpjsk8r7futcn1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitsync.cureconnect",
+            "certificate_hash": "2bc58a8d1bda86fc0cefb4439df913eea4adc54e"
+          }
+        },
+        {
           "client_id": "659268634419-t9217j80dtdcm0ve6c7i7i8l1833v6ia.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -42,7 +50,7 @@
               "client_id": "659268634419-4uvmq776svfn0hko100etsru9o174f81.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.cureconnectApp"
+                "bundle_id": "com.mitsync.cureconnectApp"
               }
             }
           ]

@@ -1,6 +1,6 @@
 {
-    "name": "cureconnect_app",
-    "short_name": "cureconnect_app",
+    "name": "cure_connect",
+    "short_name": "cure_connect",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

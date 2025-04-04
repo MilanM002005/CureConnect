@@ -57,7 +57,7 @@ class CureConnectApp extends StatelessWidget {
         '/register': (context) => const RegisterScreen(),
         '/login': (context) => const LoginScreen(),
         '/home': (context) => const HomeScreen(),
-        '/nearby': (context) => const NearbyHospitalsScreen(),
+        '/nearby': (context) => const NearbyHospitalsScreen(selectedHospital: {},),
         '/emergency': (context) => const EmergencyScreen(),
         '/settings': (context) => const SettingsScreen(),
         '/emergency_contacts': (context) => const EmergencyContactsScreen(),

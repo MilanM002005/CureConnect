@@ -1,4 +1,4 @@
-# cureconnect_app
+# cure_connect
 
 A new Flutter project.
 
