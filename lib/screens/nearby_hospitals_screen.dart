@@ -3,11 +3,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'hospital_details_screen.dart';
 
 class NearbyHospitalsScreen extends StatefulWidget {
-  final Map<String, dynamic> selectedHospital; // Changed to accept full hospital data
+  final Map<String, dynamic> selectedHospital; 
 
   const NearbyHospitalsScreen({
     super.key,
-    required this.selectedHospital, // Properly declare required parameter
+    required this.selectedHospital, 
   });
 
   @override
@@ -17,7 +17,7 @@ class NearbyHospitalsScreen extends StatefulWidget {
 class _NearbyHospitalsScreenState extends State<NearbyHospitalsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  late List<Map<String, String>> hospitals; // Moved hospitals list to state
+  late List<Map<String, String>> hospitals; 
 
   @override
   void initState() {
