@@ -16,7 +16,7 @@ class _PetitionsScreenState extends State<PetitionsScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final User? _user = FirebaseAuth.instance.currentUser;
   bool _isSubmitting = false;
-  String _filterStatus = 'all'; // 'all', 'open', 'accepted'
+  String _filterStatus = 'all'; 
   String _searchQuery = '';
 
   @override
@@ -180,7 +180,7 @@ class _PetitionsScreenState extends State<PetitionsScreen> {
         .collection('petitions')
         .orderBy('timestamp', descending: true);
 
-    // Apply status filter
+    
     if (_filterStatus == 'open') {
       query = query.where('acceptedBy', isNull: true);
     } else if (_filterStatus == 'accepted') {
