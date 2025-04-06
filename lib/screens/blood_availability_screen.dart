@@ -125,7 +125,7 @@ class BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
       ),
       body: Column(
         children: [
-          // 🔹 Search Bar
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
@@ -144,7 +144,7 @@ class BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
 
           const SizedBox(height: 16),
 
-          // 🔹 Hero Banner
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ClipRRect(
@@ -160,7 +160,7 @@ class BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
 
           const SizedBox(height: 16),
 
-          // 🔹 Blood Requests List
+          
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
