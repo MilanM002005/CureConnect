@@ -7,22 +7,22 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink, // Background color remains the same
+      backgroundColor: Colors.pink, 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Top spacing for aesthetics
+          
           const SizedBox(height: 50),
 
-          // Logo and app title
+          
           Column(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(40), // Curved edges
                 child: Image.asset(
-                  'assets/logo.png', // Replace with your logo asset
+                  'assets/logo.png', 
                   height: 150,
-                  semanticLabel: 'App Logo', // Accessibility improvement
+                  semanticLabel: 'App Logo', 
                 ),
               ),
               const SizedBox(height: 20),
@@ -47,7 +47,7 @@ class SplashScreen extends StatelessWidget {
             ],
           ),
 
-          // "Get Started" Button (Replaces automatic navigation)
+      
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: SizedBox(
@@ -72,7 +72,7 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
 
-          // Bottom spacing for aesthetics
+      
           const SizedBox(height: 50),
         ],
       ),
