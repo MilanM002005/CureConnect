@@ -20,12 +20,12 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ✅ Initialize Firebase before running the app
+  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // ✅ Load theme preferences
+
   final themeProvider = ThemeProvider();
   await themeProvider.loadTheme();
 
@@ -65,7 +65,7 @@ class CureConnectApp extends StatelessWidget {
         '/donor_details': (context) {
           final donorArgs = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
           return DonorDetailsScreen(donor: donorArgs['donor'], donorId: donorArgs['donorId']);
-        }, // ✅ Corrected passing donor data
+        },
         '/blood_camps': (context) => const BloodDonationCampsScreen(),
         '/blood_chart': (context) => const BloodChartScreen(),
       },
@@ -75,8 +75,8 @@ class CureConnectApp extends StatelessWidget {
           final args = settings.arguments as Map<String, dynamic>;
           return MaterialPageRoute(
             builder: (context) => DonorDetailsScreen(
-              donorId: args['donorId'], // ✅ Ensure donorId is passed
-              donor: args['donor'], // ✅ Ensure donor data is passed
+              donorId: args['donorId'], 
+              donor: args['donor'], 
             ),
           );
         }
@@ -86,7 +86,7 @@ class CureConnectApp extends StatelessWidget {
   }
 }
 
-// ✅ ThemeProvider Class Implementation
+
 class ThemeProvider extends ChangeNotifier {
   bool _isDarkMode = false;
   bool get isDarkMode => _isDarkMode;
